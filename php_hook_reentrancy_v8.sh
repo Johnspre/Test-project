@@ -172,8 +172,8 @@ $routes = [
     }
 ];
 
-$a = isset($argv[1]) && ctype_digit($argv[1]) ? (int) $argv[1] : -1;
-$r = isset($argv[2]) && ctype_digit($argv[2]) ? (int) $argv[2] : -1;
+$a = isset($argv[1]) && is_numeric($argv[1]) ? (int) $argv[1] : -1;
+$r = isset($argv[2]) && is_numeric($argv[2]) ? (int) $argv[2] : -1;
 $names = array_keys($routes);
 if (!isset($actions[$a], $names[$r])) {
     fwrite(STDERR, "Invalid test selection\n");
