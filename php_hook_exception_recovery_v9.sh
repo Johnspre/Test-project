@@ -176,6 +176,11 @@ try {
 } catch (Throwable $e) {
     $outer = get_class($e);
 }
+// Some control routes (e.g. print_r) do not invoke a getter.
+// Trigger the expected first exception separately, then assess the clean recovery.
+if ($o->armed) {
+    try { $discard = $o->value; } catch (Throwable $expected) {}
+}
 $recovery = 'accepted';
 $final = -1;
 try {
